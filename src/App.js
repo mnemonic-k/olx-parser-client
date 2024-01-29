@@ -7,9 +7,9 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 
 const getOlxPosts = async (query) => {
-  let url = 'http://localhost:4000/olx-parser/posts'
+  let baseUrl = process.env.REACT_APP_BASE_API_URL
   
-  const response = await axios.get(url, {
+  const response = await axios.get(`${baseUrl}/olx-parser/posts`, {
     params: {
     ...(query?.q ? {q: query.q}: {}),
     offset: query?.offset || 0,
